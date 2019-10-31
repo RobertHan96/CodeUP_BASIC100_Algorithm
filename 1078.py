@@ -7,12 +7,16 @@
 (0 ~ 100)
 '''
 
-j= 0  
-num=int(input())
 
-for i in range(num) :  
-    if i%2 == 0 :
-        j = j+i
-    else : 
-        i += 1     
-print(j)
+def sumEven():
+    num = int(input())
+    total = 0
+    i = 0
+    while i <= num:
+        if i % 2 == 0:
+            total += i
+        i += 1
+    print(total)
+
+
+sumEven()
