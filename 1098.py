@@ -18,6 +18,24 @@
 # 단, 각 숫자는 공백으로 구분하여 출력한다.
 
 h, w = input("판의 세로 크기, 가로 크기 입력 : ").split()
-n = input("막대의 개수 입력 :")
+h, w = int(h), int(w)
+arrary = []
+n = int(input("막대의 개수 입력 :"))
+
+for i in range(h):
+    arrary.append([])
+    for j in range(w):
+        arrary[i].append(0)
+
+
 for i in range(n):
-    l, d, x, y = input().split()
+    l, d, x, y = input("막대의 길이, 방향(0은 가로, 1은 세로), x좌표, y좌표 입력 : ").split()
+    for j in range(int(l)):
+        if int(d) == 0:
+            arrary[int(x)-1][int(y)-1+j] = 1
+        else:
+            arrary[int(x)-1+j][int(y)-1] = 1
+for i in range(h):
+    for j in range(w):
+        print(arrary[i][j], end=' ')
+    print('')
