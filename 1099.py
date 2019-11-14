@@ -22,25 +22,36 @@
 
 # 출력
 # 성실한 개미가 이동한 경로를 9로 표시해 출력한다.
-h, w = input("판의 세로 크기, 가로 크기 입력 : ").split()
-h, w = int(h), int(w)
+
 arrary = []
-n = int(input("막대의 개수 입력 :"))
 
-for i in range(h):
+for i in range(12):
     arrary.append([])
-    for j in range(w):
+    for j in range(12):
         arrary[i].append(0)
+for i in range(10):
+    a = input().split()
+    for j in range(10):
+        arrary[i+1][j+1] = int(a[j])
+
+x = 2
+y = 2
+
+while True:
+    if arrary[x][y] == 0:
+        arrary[x][y] = 9
+    elif arrary[x][y] == 2:
+        arrary[x][y] = 9
+        break
+    if((arrary[x][y+1] == 1 and arrary[x+1][y] == 1) or (x == 9 and y == 9)):
+        break
+    if(arrary[x][y+1] != 1):
+        y += 1
+    elif(arrary[x+1][y] != 1):
+        x += 1
 
 
-for i in range(n):
-    l, d, x, y = input("막대의 길이, 방향(0은 가로, 1은 세로), x좌표, y좌표 입력 : ").split()
-    for j in range(int(l)):
-        if int(d) == 0:
-            arrary[int(x)-1][int(y)-1+j] = 1
-        else:
-            arrary[int(x)-1+j][int(y)-1] = 1
-for i in range(h):
-    for j in range(w):
+for i in range(1, 11):
+    for j in range(1, 11):
         print(arrary[i][j], end=' ')
     print('')
